@@ -52,6 +52,71 @@ Tidak ada lagi entry "buta". EA ini menggunakan kombinasi filter **Moving Averag
 
 ---
 
+## ⚙️ Penjelasan Parameter (Settings) Secara Rinci
+
+### 1. Common Settings (Pengaturan Umum)
+*   **EA_NAME**: Nama EA yang akan muncul di komentar setiap transaksi.
+*   **ExpertID (Magic Number)**: ID unik EA. Pastikan ID ini berbeda jika menjalankan EA yang sama pada pair berbeda di satu akun.
+
+### 2. Trade Execution Mode
+*   **StartingTradesMST**: 
+    *   `Automatic`: EA membuka posisi pertama sendiri berdasarkan sinyal.
+    *   `Manual / Button`: EA hanya akan mulai bekerja setelah Anda menekan tombol di chart.
+*   **StartingTradesMSTBUT**: Metode eksekusi tombol.
+    *   `Direct Order`: Langsung buka posisi saat tombol ditekan.
+    *   `Close Candle`: Menunggu candle saat ini selesai baru membuka posisi.
+
+### 3. Lot Management
+*   **Lot**: Ukuran lot awal (posisi pertama).
+*   **StartingTradesM**: 
+    *   `Lot Adder`: Lot posisi selanjutnya ditambah (Lot 1 + Multiplier).
+    *   `Multiplier Lot`: Lot posisi selanjutnya dikali (Lot 1 * Multiplier).
+*   **Multiplier**: Nilai penambahan atau pengali untuk level averaging selanjutnya.
+
+### 4. Takeprofit & Recovery (TP Mode)
+*   **StartingTradesTP**: Metode penentuan target profit.
+    *   `Pips`: Target profit murni berdasarkan jarak pips dari harga entry.
+    *   `BEP + Pips`: Target profit dihitung dari titik impas (harga rata-rata) ditambah pips.
+    *   `BEP + $`: Target profit dihitung dari titik impas ditambah nilai dollar.
+*   **TP_Averaging**: Nilai target profit (sesuai metode yang dipilih di atas).
+
+### 5. Hidden Protection (Proteksi Tersembunyi)
+*Fitur ini digunakan agar TP/SL tidak terlihat oleh server broker.*
+*   **HTPP / HTP / HTPD**: Hidden Takeprofit dalam bentuk Pips, BEP+Pips, atau BEP+$.
+*   **HStoploss**: Stoploss tersembunyi dalam pips.
+*   **HAutoSL**: Jika `true`, EA akan menggunakan Low/High candle sebelumnya sebagai Stoploss otomatis.
+
+### 6. Safety & Grid Logic
+*   **Max Range Open From Candle**: Jarak maksimal harga saat ini dari harga Open Candle untuk mengizinkan entry (mencegah entry saat harga sudah "lari").
+*   **Min Range Next Order**: Jarak minimal (pips) antara posisi satu dengan posisi averaging selanjutnya.
+*   **Min Range Next Order Start**: Level order keberapa grid minimal mulai diterapkan.
+
+### 7. Close On Opposite Signal
+*   **CloseOnOppositeSignal**: Jika `true`, EA akan menutup semua posisi jika muncul sinyal yang berlawanan arah.
+*   **StartingTradesMCOS**:
+    *   `All`: Tutup semua posisi (profit/loss).
+    *   `Loss Only`: Hanya tutup jika posisi dalam keadaan rugi.
+
+### 8. Emergency Exit (Close On BEP)
+*   **CloseOnBEPb**: Mengaktifkan fitur "Exit Darurat".
+*   **CloseOnBEP**: Batas floating minus (dalam Dollar). Jika floating minus mencapai angka ini, EA akan masuk mode siaga dan akan menutup semua posisi segera setelah grafik profit kembali menyentuh titik impas (0 atau $0.10).
+
+### 9. Trailing Stop Settings
+*   **Trailing Stop ON**: Mengaktifkan trailing stop standar.
+*   **Trailing Lock Profit BEP**: Mengunci profit pada harga BEP jika harga sudah melaju jauh sesuai arah posisi.
+
+---
+
+## 📊 Tips Optimasi
+1.  **Untuk Modal Kecil ($100-$500)**: Gunakan `StartingTradesM = Multiplier` dengan nilai `Multiplier = 1.5` atau `2.0` dan `Lot = 0.01`.
+2.  **Untuk Mengunakan Modal Cent Minimal 1000cent 
+3.  **Untuk Recovery Cepat**: Gunakan `StartingTradesTP = BEP + $` dengan nilai `TP_Averaging = 1` hingga `5`.
+4.  **Keamanan Tinggi**: Aktifkan `MAFilter_ON` agar EA tidak melawan arus tren besar (Trend Follower).
+
+---
+
+
+
 ## 📞 Hubungi Pengembang
 Ingin mendapatkan Full Version atau akses lisensi? Hubungi kami sekarang:
 
