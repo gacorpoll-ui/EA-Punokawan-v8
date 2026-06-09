@@ -5,7 +5,7 @@
 
 **EA Punokawan V.8_MA** bukan sekadar robot trading biasa. Ini adalah mahakarya algoritma yang dirancang khusus untuk menghadapi volatilitas pasar yang ekstrem dengan sistem **Dynamic Recovery Cycle**. Dibangun untuk trader yang menginginkan keamanan aset sekaligus pertumbuhan profit yang konsisten.
 
----
+---Send STAR ME On trial EA PunoKawan---
 
 ## 🌟 Mengapa Memilih Punokawan V.8_MA?
 
